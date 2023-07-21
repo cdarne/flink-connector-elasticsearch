@@ -21,29 +21,30 @@
 
 package org.apache.flink.connector.elasticsearch.sink;
 
+import org.apache.flink.api.connector.sink2.Sink;
+import org.apache.flink.connector.base.sink.throwable.FatalExceptionClassifier;
+import org.apache.flink.connector.base.sink.writer.AsyncSinkWriter;
+import org.apache.flink.connector.base.sink.writer.BufferedRequestState;
+import org.apache.flink.connector.base.sink.writer.ElementConverter;
+import org.apache.flink.connector.base.sink.writer.config.AsyncSinkWriterConfiguration;
+
 import co.elastic.clients.elasticsearch.ElasticsearchAsyncClient;
 import co.elastic.clients.elasticsearch.core.BulkRequest;
 import co.elastic.clients.elasticsearch.core.BulkResponse;
 import co.elastic.clients.elasticsearch.core.bulk.BulkOperation;
-
-import org.apache.flink.api.connector.sink2.Sink;
-import org.apache.flink.connector.base.sink.throwable.FatalExceptionClassifier;
-import org.apache.flink.connector.base.sink.writer.AsyncSinkWriter;
-
-import org.apache.flink.connector.base.sink.writer.BufferedRequestState;
-import org.apache.flink.connector.base.sink.writer.ElementConverter;
-
-import org.apache.flink.connector.base.sink.writer.config.AsyncSinkWriterConfiguration;
-
 import org.apache.http.HttpHost;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.ConnectException;
 import java.net.NoRouteToHostException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Consumer;
 
+/** Elasticsearch8Writer. */
 public class Elasticsearch8Writer<InputT> extends AsyncSinkWriter<InputT, Operation> {
     private static final Logger LOG = LoggerFactory.getLogger(Elasticsearch8Writer.class);
 

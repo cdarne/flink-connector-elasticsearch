@@ -23,15 +23,17 @@ package org.apache.flink.connector.elasticsearch.sink;
 
 import co.elastic.clients.elasticsearch.ElasticsearchAsyncClient;
 import org.apache.http.HttpHost;
-import org.testcontainers.junit.jupiter.Testcontainers;
-import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
+import static org.junit.Assert.assertEquals;
+
+/** NetworkConfigFactoryTest. */
 @Testcontainers
 public class NetworkConfigFactoryTest extends ElasticsearchSinkBaseITCase {
     /**
      * Create a simple instance of ElasticsearchClient
-     * without username and password
+     * without username and password.
      *
      */
     @Test
@@ -44,7 +46,7 @@ public class NetworkConfigFactoryTest extends ElasticsearchSinkBaseITCase {
 
     /**
      * Create a simple instance of ElasticsearchClient
-     * with username and password
+     * with username and password.
      *
      */
     @Test

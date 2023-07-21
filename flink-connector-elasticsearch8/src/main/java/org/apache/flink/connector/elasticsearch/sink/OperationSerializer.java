@@ -30,6 +30,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
+/** OperationSerializer. */
 public class OperationSerializer {
     private final Kryo kryo = new Kryo();
 

@@ -21,23 +21,20 @@ package org.apache.flink.connector.elasticsearch.sink;
  *
  */
 
-import co.elastic.clients.elasticsearch.ElasticsearchClient;
-import co.elastic.clients.elasticsearch.core.IndexRequest;
-import co.elastic.clients.elasticsearch.core.bulk.BulkOperation;
-import co.elastic.clients.elasticsearch.core.bulk.BulkOperationVariant;
-import co.elastic.clients.json.jackson.JacksonJsonpMapper;
-import co.elastic.clients.transport.rest_client.RestClientTransport;
-import org.elasticsearch.client.RestClient;
-
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+
+import co.elastic.clients.elasticsearch.ElasticsearchClient;
+import co.elastic.clients.elasticsearch.core.bulk.BulkOperation;
+import co.elastic.clients.json.jackson.JacksonJsonpMapper;
+import co.elastic.clients.transport.rest_client.RestClientTransport;
 import org.apache.http.HttpHost;
-
-import org.junit.jupiter.api.Test;
+import org.elasticsearch.client.RestClient;
 import org.junit.jupiter.api.BeforeEach;
-
+import org.junit.jupiter.api.Test;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+/** Elasticsearch8SinkTest. */
 @Testcontainers
 public class Elasticsearch8SinkTest extends ElasticsearchSinkBaseITCase {
     @BeforeEach
@@ -48,13 +45,13 @@ public class Elasticsearch8SinkTest extends ElasticsearchSinkBaseITCase {
 
     /**
      * indexingByThresholdReached
-     * It's expected to sink data when the threshold specified is reached
+     * It's expected to sink data when the threshold specified is reached.
      *
      * @throws Exception
      */
     @Test
     public void indexingByThresholdReached() throws Exception {
-        String ELASTICSEARCH_INDEX_NAME = "threshold-reached";
+        String elasticsearchIndexName = "threshold-reached";
 
         final StreamExecutionEnvironment env = StreamExecutionEnvironment
             .getExecutionEnvironment()
@@ -62,7 +59,7 @@ public class Elasticsearch8SinkTest extends ElasticsearchSinkBaseITCase {
 
         final Elasticsearch8Sink<DummyData> sink = Elasticsearch8SinkBuilder.<DummyData>builder()
             .setHosts(new HttpHost(ES_CONTAINER.getHost(), ES_CONTAINER.getFirstMappedPort()))
-            .setConverter((element, ctx) -> new BulkOperation.Builder().index(op -> op.index(ELASTICSEARCH_INDEX_NAME).id(element.id).ifPrimaryTerm(1L).ifSeqNo(1L).document(element)).build())
+            .setConverter((element, ctx) -> new BulkOperation.Builder().index(op -> op.index(elasticsearchIndexName).id(element.id).ifPrimaryTerm(1L).ifSeqNo(1L).document(element)).build())
             .build();
 
         env
@@ -72,9 +69,10 @@ public class Elasticsearch8SinkTest extends ElasticsearchSinkBaseITCase {
 
         env.execute();
 
-        assertIdsAreWritten(ELASTICSEARCH_INDEX_NAME, new String[]{"first_v1_index", "second_v1_index"});
+        assertIdsAreWritten(elasticsearchIndexName, new String[]{"first_v1_index", "second_v1_index"});
     }
 
+    /** DummyData. */
     public static class DummyData {
         private final String id;
 

@@ -27,12 +27,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
+/** Elasticsearch8SinkBuilderTest. */
 public class Elasticsearch8SinkBuilderTest {
 
     /**
      * Do not allow invalid Sink objects to be created;
      * The validate method should guarantee that all
-     * required properties are in place with valid values
+     * required properties are in place with valid values.
      *
      */
     @Test
@@ -46,7 +47,7 @@ public class Elasticsearch8SinkBuilderTest {
 
     /**
      * Emitter should be declared to create
-     * a valid ElasticsearchSink instance
+     * a valid ElasticsearchSink instance.
      *
      */
     @Test
@@ -65,7 +66,7 @@ public class Elasticsearch8SinkBuilderTest {
 
     /**
      * The username, if provided, cannot be null to create
-     * a valid ElasticsearchSink instance
+     * a valid ElasticsearchSink instance.
      *
      */
     @Test
@@ -82,7 +83,7 @@ public class Elasticsearch8SinkBuilderTest {
 
     /**
      * The password, if provided, cannot be null to create
-     * a valid ElasticsearchSink instance
+     * a valid ElasticsearchSink instance.
      *
      */
     @Test

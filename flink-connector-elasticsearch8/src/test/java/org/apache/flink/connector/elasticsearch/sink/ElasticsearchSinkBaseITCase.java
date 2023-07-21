@@ -20,24 +20,26 @@ package org.apache.flink.connector.elasticsearch.sink;
  *
  */
 
-import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import org.apache.flink.runtime.testutils.MiniClusterResourceConfiguration;
 import org.apache.flink.test.util.MiniClusterWithClientResource;
+
+import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import org.apache.http.util.EntityUtils;
 import org.elasticsearch.client.Request;
 import org.elasticsearch.client.Response;
 import org.elasticsearch.client.RestClient;
+import org.junit.ClassRule;
 import org.testcontainers.elasticsearch.ElasticsearchContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
-import org.junit.ClassRule;
 
 import java.io.IOException;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.Assert.assertEquals;
 
+/** ElasticsearchSinkBaseITCase. */
 @Testcontainers
 public class ElasticsearchSinkBaseITCase {
     public RestClient client;

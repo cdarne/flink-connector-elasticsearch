@@ -23,9 +23,10 @@ package org.apache.flink.connector.elasticsearch.sink;
 
 import co.elastic.clients.elasticsearch.core.bulk.BulkOperationVariant;
 
-import java.io.*;
+import java.io.Serializable;
 import java.util.Objects;
 
+/** Operation. */
 public class Operation implements Serializable {
     private final BulkOperationVariant bulkOperationVariant;
 
@@ -50,8 +51,12 @@ public class Operation implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Operation operation = (Operation) o;
         return Objects.equals(bulkOperationVariant, operation.bulkOperationVariant);
     }
@@ -64,7 +69,7 @@ public class Operation implements Serializable {
     @Override
     public String toString() {
         return "Operation{" +
-            "bulkOperationVariant=" + bulkOperationVariant +
-            '}';
+                "bulkOperationVariant=" + bulkOperationVariant +
+                '}';
     }
 }

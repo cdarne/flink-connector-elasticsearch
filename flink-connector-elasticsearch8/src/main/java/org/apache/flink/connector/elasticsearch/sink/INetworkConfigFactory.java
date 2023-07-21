@@ -18,12 +18,14 @@
  * under the License.
  *
  */
+
 package org.apache.flink.connector.elasticsearch.sink;
 
 import co.elastic.clients.elasticsearch.ElasticsearchAsyncClient;
 
 import java.io.Serializable;
 
+/** INetworkConfigFactory. */
 public interface INetworkConfigFactory extends Serializable {
     ElasticsearchAsyncClient create();
 }

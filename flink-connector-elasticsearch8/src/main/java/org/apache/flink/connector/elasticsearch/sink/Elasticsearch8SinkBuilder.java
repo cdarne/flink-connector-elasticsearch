@@ -21,11 +21,11 @@ package org.apache.flink.connector.elasticsearch.sink;
  *
  */
 
-import co.elastic.clients.elasticsearch.core.bulk.BulkOperationVariant;
-
 import org.apache.flink.api.connector.sink2.SinkWriter;
 import org.apache.flink.connector.base.sink.AsyncSinkBaseBuilder;
 import org.apache.flink.connector.base.sink.writer.ElementConverter;
+
+import co.elastic.clients.elasticsearch.core.bulk.BulkOperationVariant;
 import org.apache.http.HttpHost;
 
 import java.util.Optional;
@@ -33,6 +33,7 @@ import java.util.Optional;
 import static org.apache.flink.util.Preconditions.checkNotNull;
 import static org.apache.flink.util.Preconditions.checkState;
 
+/** Elasticsearch8SinkBuilder. */
 public class Elasticsearch8SinkBuilder<InputT>
         extends AsyncSinkBaseBuilder<InputT, Operation, Elasticsearch8SinkBuilder<InputT>> {
 
@@ -44,38 +45,38 @@ public class Elasticsearch8SinkBuilder<InputT>
     private static final long DEFAULT_MAX_RECORD_SIZE_IN_B = 1024 * 1024;
 
     /**
-     * The hosts where the Elasticsearch cluster is reachable
+     * The hosts where the Elasticsearch cluster is reachable.
      *
      */
     private HttpHost[] hosts;
 
     /**
-     * The username to authenticate the connection with the Elasticsearch cluster
+     * The username to authenticate the connection with the Elasticsearch cluster.
      *
      */
     private String username;
 
     /**
-     * The password to authenticate the connection with the Elasticsearch cluster
+     * The password to authenticate the connection with the Elasticsearch cluster.
      *
      */
     private String password;
 
     /**
-     * The converter that will be called on every stream element to be processed and buffered
+     * The converter that will be called on every stream element to be processed and buffered.
      *
      */
     private ElementConverter<InputT, BulkOperationVariant> converter;
 
     /**
-     * The number of times that an operation will be retried
+     * The number of times that an operation will be retried.
      *
      */
     private int maxRetries;
 
     /**
-     * setHost
-     * set the host where the Elasticsearch cluster is reachable
+     * setHosts
+     * set the hosts where the Elasticsearch cluster is reachable.
      *
      * @param hosts the hosts address
      * @return {@code ElasticsearchSinkBuilder}
@@ -89,7 +90,7 @@ public class Elasticsearch8SinkBuilder<InputT>
 
     /**
      * setUsername
-     * set the username to authenticate the connection with the Elasticsearch cluster
+     * set the username to authenticate the connection with the Elasticsearch cluster.
      *
      * @param username the auth username
      * @return {@code ElasticsearchSinkBuilder}
@@ -102,7 +103,7 @@ public class Elasticsearch8SinkBuilder<InputT>
 
     /**
      * setPassword
-     * set the password to authenticate the connection with the Elasticsearch cluster
+     * set the password to authenticate the connection with the Elasticsearch cluster.
      *
      * @param password the auth password
      * @return {@code ElasticsearchSinkBuilder}
@@ -115,7 +116,7 @@ public class Elasticsearch8SinkBuilder<InputT>
 
     /**
      * setConverter
-     * set the converter that will be called at every stream element to be processed and buffered
+     * set the converter that will be called at every stream element to be processed and buffered.
      *
      * @param converter converter operation
      * @return {@code ElasticsearchSinkBuilder}
@@ -130,7 +131,7 @@ public class Elasticsearch8SinkBuilder<InputT>
 
     /**
      * setMaxRetries
-     * set the number of times an operation will be retried
+     * set the number of times an operation will be retried.
      *
      * @param maxRetries number
      * @return {@code ElasticsearchSinkBuilder}
@@ -148,7 +149,7 @@ public class Elasticsearch8SinkBuilder<InputT>
     }
 
     /**
-     * Creates an ElasticsearchSink instance
+     * Creates an ElasticsearchSink instance.
      *
      * @return ElasticsearchSink
      */

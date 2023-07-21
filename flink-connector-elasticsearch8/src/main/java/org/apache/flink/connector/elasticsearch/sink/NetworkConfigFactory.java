@@ -18,12 +18,12 @@
  * under the License.
  *
  */
+
 package org.apache.flink.connector.elasticsearch.sink;
 
 import co.elastic.clients.elasticsearch.ElasticsearchAsyncClient;
 import co.elastic.clients.json.jackson.JacksonJsonpMapper;
 import co.elastic.clients.transport.rest_client.RestClientTransport;
-
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -38,8 +38,8 @@ import static org.apache.flink.shaded.curator5.com.google.common.base.Preconditi
 /**
  * NetworkConfigFactory
  *
- * A factory that implements the INetworkConfigFactory interface
- * to create valid ElasticsearchClient instances
+ * <p>A factory that implements the INetworkConfigFactory interface
+ * to create valid ElasticsearchClient instances.</p>
  */
 public class NetworkConfigFactory implements INetworkConfigFactory {
     private static final Logger LOG = LoggerFactory.getLogger(NetworkConfigFactory.class);
